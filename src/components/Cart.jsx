@@ -6,10 +6,8 @@ import StripeCheckout from "react-stripe-checkout";
 import { CartState } from "../context/Context";
 import Rating from "./Rating";
 
-const STRIPE_KEY =
-  "pk_test_51MFukvDGrBFyxcTWSTMdOjO2eJXzVuBO9rPeHfMNzZS5seqCiaQWF0Bc0yZAcJvaygKklVM0XGsTyfkAAeNH12gX001CA3cumv";
-
 export default function Cart() {
+  console.log("stripe key:", process.env.STRIPE_KEY);
   const {
     state: { cart },
     dispatch,
@@ -119,7 +117,7 @@ export default function Cart() {
           description="Your total is $20"
           amount={2000}
           token={onToken}
-          stripeKey={STRIPE_KEY}
+          stripeKey={process.env.REACT_APP_STRIPE_KEY}
         >
           <Button type="button">Proceed to Checkout</Button>
         </StripeCheckout>
